@@ -26,14 +26,26 @@ export default function calculator(){
 
     const teclas = ['C', '()', '%', '/', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', 'א', '0', '.', '=']
 
+
+    const Fexpression = (e)=>{
+        
+    }
+
+    const FNumber = (e)=>{
+        
+    }
+
     const teclasRender = (tc)=>{
         const a = tc.map((e)=>{
-            let elements = <button value={e}>{e}</button>
+            let elements = <button onClick={(el)=>(isNaN(e) ? Fexpression(el) : FNumber(el))} value={e}>{e}</button>
             return elements
         })
         return a
     }
 
+
+    
+ 
 
     return(
         <div id='kol'>
