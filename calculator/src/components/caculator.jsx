@@ -21,18 +21,48 @@ import Style from './style/style.css'
                 <button>.</button>
                 <button>=</button> */
 
-export default function calculator(){
+export default function calculator(props){
 
 
     const teclas = ['C', '()', '%', '/', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', 'א', '0', '.', '=']
-
-
-    const Fexpression = (e)=>{
+    const [currentOp, setCurrentOP] = props.useState(0)
+ 
+    const displayCOP = (cop)=>{
+        if(currentOp == '0'){
+            
+            setCurrentOP(cop)
+        } else {
+            setCurrentOP(currentOp + cop)
+        }
         
     }
 
+
+    const Fexpression = (e)=>{
+        switch (e){
+            case 'C':
+                break
+            case '()':
+                break
+            case '%':
+                break
+            case '/':
+                break
+            case 'X':
+                break
+            case '-':
+                break
+            case '+':
+                break
+            case '.':
+                break
+            case '=':
+                break       
+        }
+    }
+
     const FNumber = (e)=>{
-        
+        displayCOP(e.target.value)
     }
 
     const teclasRender = (tc)=>{
@@ -43,6 +73,10 @@ export default function calculator(){
         return a
     }
 
+    
+
+    
+
 
     
  
@@ -51,6 +85,8 @@ export default function calculator(){
         <div id='kol'>
             <div id='calculator'>
                 <div id="display">
+                    <p id='currentOP'>{currentOp}</p>
+                    <p id='previousOP'>0</p>
 
                 </div>
                 <div id="teclas">

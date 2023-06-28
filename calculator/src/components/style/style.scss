@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 #kol {
     width: 100%;
     height: 500px;
@@ -10,14 +16,35 @@
 
 
 #calculator{
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: black;
     border-radius: 10px;
     padding: 5px;
-    width: 55vw;
+    width: 17.5rem;
     height: 25rem;
     div#display {
-        height:29% ;
+        height:25% ;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        p#currentOP{
+            color: white;
+            font-weight: 600;
+            font-size: 2.4rem;
+            
+        }
+        p#previousOP{
+            font-weight: 500;
+            color: white;
+            font-size: 1.5rem;
+            
+        }
     }
 
     div#teclas {
@@ -25,16 +52,17 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         height: 70%;
         gap: 5px;
-        padding: 2px;
-        width: 100%;
+        padding: 7px;
+        width: 98%;
         button{
             background-color: rgba(24, 24, 24, 0.877);
             color: white;
             font-weight: 600;
             font-size: 20px;
             border: none;
-            height: 95%;
-            width: 90%;
+            
+            height: 100%;
+            width: 100%;
             border-radius: 100%;
             transition: all ease-in 0.099s;
         }
