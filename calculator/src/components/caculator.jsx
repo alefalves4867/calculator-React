@@ -19,7 +19,9 @@ import Style from './style/style.css'
                 <button>א</button>
                 <button>0</button>
                 <button>.</button>
-                <button>=</button> */
+                <button>=</button> 
+                
+                */
 
 export default function calculator(props){
 
@@ -65,7 +67,7 @@ export default function calculator(props){
         displayCOP(e.target.value)
     }
 
-    const teclasRender = (tc)=>{
+    const teclasRender = (tc)=>{ /*renderiza os elementos do calc */
         const a = tc.map((e)=>{
             let elements = <button onClick={(el)=>(isNaN(e) ? Fexpression(el) : FNumber(el))} value={e}>{e}</button>
             return elements
