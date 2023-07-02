@@ -27,7 +27,7 @@ okkkkkk
 export default function calculator(props){
 
 
-    const teclas = ['C', '()', '%', '/', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', 'א', '0', '.', '=']
+    const teclas = ['C', 'ש', '%', '/', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', 'א', '0', '.', '=']
     const [previousOp, setPreviousOP] = props.useState(0)
     const [currentOp, setCurrentOP] = props.useState(0)
     const math = require('mathjs')
@@ -57,10 +57,11 @@ export default function calculator(props){
             case 'C':
                 
                 break
-            case '()':
+            case '%':
                 if(previousOp === 0){
-                    setCurrentOP('(' )
+                    setPreviousOP(currentOp + ' %')
                 } else {
+
                     let prv = previousOp
 
                     // Avaliando a expressão usando a função eval() do Math.js
@@ -71,11 +72,8 @@ export default function calculator(props){
                 }
                 
                 setCurrentOP(0)
-                
                 break
-            case '%':
                 
-                break
             case '/':
                 if(previousOp === 0){
                     setPreviousOP(currentOp + ' /')
