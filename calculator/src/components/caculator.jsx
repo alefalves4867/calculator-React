@@ -30,6 +30,8 @@ export default function calculator(props){
     const teclas = ['C', '()', '%', '/', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', 'א', '0', '.', '=']
     const [previousOp, setPreviousOP] = props.useState(0)
     const [currentOp, setCurrentOP] = props.useState(0)
+    const math = require('mathjs')
+    const [bar, setBar] = props.useState(true)
     
  
     const displayCOP = (cop)=>{
@@ -56,6 +58,19 @@ export default function calculator(props){
                 
                 break
             case '()':
+                if(previousOp === 0){
+                    setCurrentOP('(' )
+                } else {
+                    let prv = previousOp
+
+                    // Avaliando a expressão usando a função eval() do Math.js
+
+                    const tot = math.evaluate(prv + currentOp)
+                    setPreviousOP(0)
+                    return setCurrentOP(tot)
+                }
+                
+                setCurrentOP(0)
                 
                 break
             case '%':
@@ -65,9 +80,11 @@ export default function calculator(props){
                 if(previousOp === 0){
                     setPreviousOP(currentOp + ' /')
                 } else {
-                    let prv = previousOp.slice(0,-1)
-                    
-                    const tot = (parseFloat(prv) / parseFloat(currentOp))
+                    let prv = previousOp
+
+                    // Avaliando a expressão usando a função eval() do Math.js
+
+                    const tot = math.evaluate(prv + currentOp)
                     setPreviousOP(0)
                     return setCurrentOP(tot)
                 }
@@ -77,11 +94,14 @@ export default function calculator(props){
                 break
             case 'X':
                 if(previousOp === 0){
-                    setPreviousOP(currentOp + ' X')
+                    setPreviousOP(currentOp + ' *')
                 } else {
-                    let prv = previousOp.slice(0,-1)
-                    
-                    const tot = (parseFloat(prv) * parseFloat(currentOp))
+
+                    let prv = previousOp
+
+                    // Avaliando a expressão usando a função eval() do Math.js
+
+                    const tot = math.evaluate(prv + currentOp)
                     setPreviousOP(0)
                     return setCurrentOP(tot)
                 }
@@ -92,9 +112,11 @@ export default function calculator(props){
                 if(previousOp === 0){
                     setPreviousOP(currentOp + ' -')
                 } else {
-                    let prv = previousOp.slice(0,-1)
-                    
-                    const tot = (parseFloat(prv) - parseFloat(currentOp))
+                    let prv = previousOp
+
+                    // Avaliando a expressão usando a função eval() do Math.js
+
+                    const tot = math.evaluate(prv + currentOp)
                     setPreviousOP(0)
                     return setCurrentOP(tot)
                 }
@@ -103,11 +125,14 @@ export default function calculator(props){
                 break
             case '+':
                 if(previousOp === 0){
-                    setPreviousOP(currentOp + ' +')
+                    setPreviousOP(currentOp + ' -')
                 } else {
-                    let prv = previousOp.slice(0,-1)
-                    
-                    const tot = (parseFloat(prv)+ parseFloat(currentOp))
+  
+                    let prv = previousOp
+
+                    // Avaliando a expressão usando a função eval() do Math.js
+
+                    const tot = math.evaluate(prv + currentOp)
                     setPreviousOP(0)
                     return setCurrentOP(tot)
                 }
